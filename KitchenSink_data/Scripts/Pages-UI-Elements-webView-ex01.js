@@ -1,0 +1,12 @@
+/*globals SMF, Pages, keys*/
+App.helpers.definePage('UI-Elements.webView.ex01', function(page, pageName){
+	var webViewPage = new SMF.UI.WebView({
+    top: "10%",
+    left: "10%",
+    URL: "http://developer.smartface.io"
+	});
+
+	page.onShow = function(e){
+		page.add(webViewPage);
+	}
+});
