@@ -1,7 +1,6 @@
 /* globals load, include, Pages, SMF, globals, keys*/
 App.helpers.definePage('UI-Elements.text-button.events', function(page, pageName){
   var toggleImages;
-  var HOME_URL = App.globals.APP_URL;
   
   txt_btn1();
   txt_btn2();
@@ -74,6 +73,4 @@ App.helpers.definePage('UI-Elements.text-button.events', function(page, pageName
       //set image according to the state, but how?
     }
   })();
-  
-  //App.helpers.txt_btn_back(page, {top: '60%', left: '10%'}); 
 });

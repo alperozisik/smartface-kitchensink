@@ -1,5 +1,5 @@
 App.helpers = (function(){
-    var globals = App.globals, defaults = App.defaults || {}, colors = defaults.colors || {};
+    var defaults = App.defaults || {}, colors = defaults.colors || {};
     function includeIfStringElseExecute(item){
         if(!item){
             return;
@@ -72,8 +72,8 @@ App.helpers = (function(){
                 includeIfStringElseExecute(lambdas);
             },
             itemTemplate: {
-                height: App.defaults.repeatbox.height || '8%',
-                fillColor: App.defaults.repeatbox.fillColor || 'yellow'
+                height: defaults.repeatbox.height || '8%',
+                fillColor: defaults.repeatbox.fillColor || 'yellow'
             }
         });
 
@@ -82,9 +82,9 @@ App.helpers = (function(){
         rBox.itemTemplate.add(line);
 
         page.add(rBox);
-        page.backgroundColor = App.defaults.page.backgroundColor;
+        page.backgroundColor = defaults.page.backgroundColor;
         page.onShow = function(){
-            App.defaults.header(page, pageName);
+            defaults.header(page, pageName);
         };
     }
     function definePage(pageName, callback){
@@ -92,91 +92,14 @@ App.helpers = (function(){
             Pages[pageName].clear();
         } else {
             Pages[pageName] = new SMF.UI.Page({
-                fillColor: App.defaults.colors.repeatBoxGrey,
-                onKeyPress: App.defaults.page.onKeyPress,
+                fillColor: defaults.colors.repeatBoxGrey,
+                onKeyPress: defaults.page.onKeyPress,
                 onShow: function(){
-                    App.defaults.header(Pages[pageName]);
+                    defaults.header(Pages[pageName]);
                 }
             });
         }
         callback(Pages[pageName], pageName);
-    }
-    function refreshMainLinks(){
-        var pages_url = globals.APP_URL + 'pages/', libs_url = globals.APP_URL + 'libs/', links = [
-            ['Refresh main.js', globals.APP_URL + 'main.js'],
-            ['Set C9', function(){
-                globals.environment.setServer('c9.current');
-                refreshMainLinks();
-            }],
-            ['Set Emulator', function(){
-                globals.environment.setServer('emulator', 3000);
-                refreshMainLinks();
-            }],
-            ['Set Genymotion', function(){
-                globals.environment.setServer('genymotion', 3000);
-                refreshMainLinks();
-            }],
-            ['Set Device @Work', function(){
-                globals.environment.setServer('work', 3000);
-                refreshMainLinks();
-            }],
-            ['Set Device @Home', function(){
-                globals.environment.setServer('home', 3000);
-                refreshMainLinks();
-            }],
-            ['Go To Links', pages_url + 'index.js']
-        ];
-        if(typeof _ === 'undefined'){
-            links.push(['Add Underscore', function(){
-                load(libs_url + 'third-party/underscore-min.js');
-                refreshMainLinks();
-            }]);
-        }
-        if(typeof Backbone === 'undefined'){
-            links.push(['Add Backbone', function(){
-                load(libs_url + 'third-party/backbone-min.js');
-                refreshMainLinks();
-            }]);
-        }
-        createLinks(Pages.Page1, 'Page1', links);
-    }
-    function txt_btn_back(parent, obj){
-        if(!obj){
-            obj = parent;
-            parent = false;
-        }
-        var btn = new SMF.UI.TextButton(
-            _.extend({
-                text: "Back",
-                onPressed: function(e) {
-                    Pages.back();
-                }
-            }, obj)
-        );
-        if(parent){
-            parent.add(btn);    
-        }
-        return btn;
-    }
-    function updateScripts(){
-        var app_url_cached = globals.APP_URL;
-        var apps_url = app_url_cached + 'app/';
-        //alert('updateScripts');
-        App.router.include(app_url_cached + 'libs/router.js');
-        App.router.include(apps_url + 'App.globals.js');
-        App.router.include(apps_url + 'App.images.js');
-        App.router.include(apps_url + 'App.defaults.js');
-        if(Device.deviceOS === 'Android'){
-            App.router.include(apps_url + 'App.defaults.android.js');
-        }
-        else{
-            App.router.include(apps_url + 'App.defaults.iOS.js');
-        }
-        App.router.include(apps_url + 'App.helpers.js');
-        App.router.include(apps_url + 'App.helpers.generic.js');
-        App.router.include(apps_url + 'App.helpers.generic.eventLogGenerator.js');
-        App.globals.APP_URL = app_url_cached;
-        App.helpers.refreshMainLinks();
     }
     function pageShow(name){
         return function(){
@@ -185,13 +108,8 @@ App.helpers = (function(){
     }
     return {
         generic: {},
-        createPageLinksAndShow: createLinks,//BC
-        //createPageLinks: createLinks,
         createLinks: createLinks,
         definePage: definePage,
-        pageShow: pageShow,
-        refreshMainLinks: refreshMainLinks,
-        txt_btn_back: txt_btn_back,
-        updateScripts: updateScripts
+        pageShow: pageShow
     };
 })();

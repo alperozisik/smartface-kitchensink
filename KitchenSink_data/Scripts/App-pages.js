@@ -23,4 +23,3 @@ load('Pages-UI-Elements-text-button-ex01.js');
 load('Pages-UI-Elements-text-button-index.js');
 load('Pages-UI-Elements-webView-ex01.js');
 load('Pages-UI-Elements-webView-index.js');
-//load('Pages-index.js');

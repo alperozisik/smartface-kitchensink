@@ -31,5 +31,4 @@ App.helpers.definePage('UI-Elements.slider-drawer.ex01', function(page, pageName
     });
     slider_drawer.add(sliderTxtBtnHide);
 
-    //App.helpers.txt_btn_back(page, {top: '60%', left: '10%'});
 });

@@ -41,10 +41,6 @@ App.defaults.header = function(page, titleHeader, rightItems) {
             return (new iOS.BarButtonItem(item));
         });
     }
-
-    /*var logo = App.images.logo.clone();
-    logo.left = '40%';
-    logo.width = '20%';
-    navBar.backgroundImage = logo;*/
-    navBar.backgroundImage = App.images.url.headerBack;
+    
+    navBar.backgroundImage = App.images.headerBack;
 };

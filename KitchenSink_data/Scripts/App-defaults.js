@@ -59,22 +59,3 @@ App.defaults = {
 		backgroundColor: '#D65900'
 	}
 };
-
-/*
-width 1240
-height
-	header 245 %20 of width
-	row h 195 %15.7 of w
-	top h 82 %42 of row h
-	bottom h 74 %38 of row h
-	item 40 
-		--not: label: height: %20, top: %40
-	
-	ok 56 w 31, %29 of row
-		left 
-		right w 82, %6.6 of row
-
-buyuk ok h 84, w 52, left 52, 425
-logo w 183, h 86, left (531 total)
-*/
-

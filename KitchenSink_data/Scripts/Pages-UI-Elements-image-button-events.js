@@ -45,7 +45,6 @@ App.helpers.definePage('UI-Elements.image-button.events', function(page, pageNam
     return label;
   }
 
-  var HOME_URL = App.globals.APP_URL;
   var label = label_event();
   page.add(label);
   
