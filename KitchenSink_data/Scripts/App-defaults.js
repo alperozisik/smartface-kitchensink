@@ -9,13 +9,15 @@ App.defaults = {
 	},
 	page: {
 		backgroundColor: '#D65900',
-		showNavigationBar : true,
-		showStatusBar : true,
-		touchEnabled : true,
-		onKeyPress : function (e) {
-			if(Device.deviceOS !== 'Android'){ return; }
+		showNavigationBar: true,
+		showStatusBar: true,
+		touchEnabled: true,
+		onKeyPress: function(e) {
+			if (Device.deviceOS !== 'Android') {
+				return;
+			}
 			if (e.keyCode === 4) {
-				if (this.name === 'Page1') {
+				if (this.name === 'UI-Elements.index') {
 					Application.exit();
 				} else {
 					Pages.back();
@@ -24,29 +26,29 @@ App.defaults = {
 		}
 	},
 	editbox: {
-		left : '20%',
-		width : '60%',
-		height : '10%',
-		fontColor : '#FFFFFF',
-		fillColor : '#C0C0C0',
-		text : '',
-		textAlignment : SMF.UI.Alignment.center,
+		left: '20%',
+		width: '60%',
+		height: '10%',
+		fontColor: '#FFFFFF',
+		fillColor: '#C0C0C0',
+		text: '',
+		textAlignment: SMF.UI.Alignment.center,
 	},
 	label: {
-		minimumFontSize : 10,
-		textAlignment : SMF.UI.Alignment.center,
-		multipleLine : false
+		minimumFontSize: 10,
+		textAlignment: SMF.UI.Alignment.center,
+		multipleLine: false
 	},
 	textbutton: {
-		left : '20%',
-		width : '60%',
-		height : '10%',
-		fontColor : '#FFFFFF'
+		left: '20%',
+		width: '60%',
+		height: '10%',
+		fontColor: '#FFFFFF'
 	},
 	image: {
-		imageFillType : 'aspectFit'
+		imageFillType: 'aspectFit'
 	},
-	header:{
+	header: {
 		//fillColor: '#FFFFFF',
 		//backgroundColor: '#07B0BE'
 	},

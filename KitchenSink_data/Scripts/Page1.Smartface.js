@@ -21,5 +21,8 @@ function Page1_Self_OnShow() {
     header.setRightItem("RItem");
     header.setLeftItem();*/
     /**/
+    //Because we are not entering from Page1
+    //Could have changed this from defaults.xml
     setTimeout(function(){ Pages['UI-Elements.index'].show(); }, 250);
+    setTimeout(function(){ Page1_Self_OnShow = function(){ Application.exit(); } }, 750);
 }

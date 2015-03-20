@@ -1,5 +1,5 @@
 /* globals load, include, Pages, SMF, globals, keys*/
-App.helpers.definePage('UI-Elements.text-button.events', function(page, pageName){
+App.helpers.definePage('UI-Elements.text-button.ex01', function(page, pageName){
   var toggleImages;
   
   txt_btn1();
