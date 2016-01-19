@@ -22,3 +22,14 @@ Object.defineProperty (SMF.UI.Page.prototype, "showStatusBar", {
         this.statusBar.visible = value;
     }
 });
+Object.defineProperty(SMF.UI.RepeatBox.prototype, "dataset", {
+    get : function () {
+        return this.dataSource;
+    },
+    set : function (value) { 
+        this.dataSource = value;
+    },
+    configurable : false,
+    enumerable : false
+});
+

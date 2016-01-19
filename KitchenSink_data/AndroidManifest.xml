@@ -92,7 +92,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity android:name="com.geniem.sprat.SpNotifications"
+         <activity android:name="io.smartface.android.SpNotifications"
                   android:label="@string/app_name"
                   android:excludeFromRecents ="true"
                   >
@@ -101,7 +101,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.geniem.sprat.notifications.MyBroadCastReceiver">
+        <receiver android:name="io.smartface.android.notifications.MyBroadCastReceiver">
             <intent-filter >
                 <action android:name="${PackageName}.localReceiver" />
             </intent-filter>
@@ -109,24 +109,24 @@
         <uses-library android:name="com.google.android.maps" />
   
         
-        <provider android:name="com.geniem.sprat.ui.AssetVideoProvider" android:authorities="${PackageName}.videoprovider"></provider>
+        <provider android:name="io.smartface.android.ui.AssetVideoProvider" android:authorities="${PackageName}.videoprovider"></provider>
         
-        <receiver android:name="com.geniem.sprat.ConnectionChangeReceiver"
+        <receiver android:name="io.smartface.android.ConnectionChangeReceiver"
           android:label="NetworkConnectionListener">
 			  <intent-filter>
 			    <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
 			  </intent-filter>
 		</receiver>
 		
-        <receiver android:name="com.geniem.sprat.SmsListener" android:enabled="true">
+        <receiver android:name="io.smartface.android.SmsListener" android:enabled="true">
 	  	   <intent-filter>
 	  	    <action android:name="android.provider.Telephony.SMS_RECEIVED" />
 	  	    <action android:name="android.provider.Telephony.SMS_REJECTED" />
 	  	</intent-filter>
   		</receiver>
         
-        <service android:name="com.geniem.sprat.billing.BillingService" />
-		<receiver android:name="com.geniem.sprat.billing.BillingReceiver">
+        <service android:name="io.smartface.android.billing.BillingService" />
+		<receiver android:name="io.smartface.android.billing.BillingReceiver">
 			<intent-filter>
 				<action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
                 <action android:name="com.android.vending.billing.RESPONSE_CODE" />
@@ -147,7 +147,8 @@
             android:value="@integer/google_play_services_version" />
          
         <receiver
-            android:name="com.geniem.sprat.notifications.GcmBroadcastReceiver"
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
           
@@ -155,7 +156,7 @@
              
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
              
-                <!-- Receives the registration id. -->
+                <!-- support pre-4.4 KitKat devices. -->
                
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
                 
@@ -163,12 +164,6 @@
                 <category android:name="${PackageName}" />
             </intent-filter>
         </receiver>
-        <activity android:name="com.facebook.android.smartfaceplugin.PickFriendsActivity"
-                  android:label="@string/app_name" />
-		<activity android:name="com.facebook.LoginActivity"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
-                  android:label="@string/app_name" />
-		<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 382731785195385"/>
         
 
         <!--
@@ -178,7 +173,11 @@
           By default, it must be named .GCMIntentService, unless the
           application uses a custom BroadcastReceiver that redefines its name.
         -->
-        <service android:name="com.geniem.sprat.notifications.GcmIntentService" />	
+        <service android:name="io.smartface.android.notifications.GCMListenerService" android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
         <meta-data
 			android:name="${PackageName}.useActionBar"
 			android:value="true"/>
@@ -189,12 +188,12 @@
         <activity android:name="com.google.android.gms.ads.AdActivity"
              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
  
-        <service android:name="com.geniem.sprat.notifications.LocalNotificationService"
+        <service android:name="io.smartface.android.notifications.LocalNotificationService"
                  android:enabled="true" />
          
-        <receiver android:name="com.geniem.sprat.notifications.LocalNotificationReceiver"/>
+        <receiver android:name="io.smartface.android.notifications.LocalNotificationReceiver"/>
         
-        <service android:name="com.geniem.sprat.notifications.NLService"
+        <service android:name="io.smartface.android.notifications.NLService"
             android:enabled="true"
           android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
      		<intent-filter>
@@ -204,3 +203,4 @@
 		
     </application>
 </manifest>
+
