@@ -1,6 +1,7 @@
 Pages.Page1 = new SMF.UI.Page({
-  onShow: Page1_Self_OnKeyPress,
-  onKeyPressed: Page1_Self_OnKeyPress
+  onShow: Page1_Self_OnShow,
+  onKeyPressed: Page1_Self_OnKeyPress,
+  fillColor: "red"
 });
 /**
 * Creates action(s) that are run when the user press the key of the devices.
@@ -28,5 +29,5 @@ function Page1_Self_OnShow() {
     //Because we are not entering from Page1
     //Could have changed this from defaults.xml
     setTimeout(function(){ Pages['UI-Elements.index'].show(); }, 250);
-    setTimeout(function(){ Page1_Self_OnShow = function(){ Application.exit(); } }, 750);
+    setTimeout(function(){ Pages.Page1.onShow = function(){ Application.exit(); } }, 750);
 }

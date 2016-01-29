@@ -13,6 +13,8 @@ function Global_Events_OnStart(e) {
     //      Comment following block for navigationbar/actionbar sample. Read the JS code file for usage.
     //      Also there is a part of code block in Page1, which should be copied to every page for HeaderBar usage
     load("HeaderBar.js");
+    include("Page1.Smartface.js");
+    Pages.Page1.show();
 }
 function Global_Events_OnError(e) {
     switch (e.type) {
