@@ -1,0 +1,10 @@
+.c9/*
+.smf/*
+output/Android/*
+output/iOS/*
+plugin/Android/*
+plugin/iOS/*
+!output/Android/README.md
+!output/iOS/README.md
+!plugin/Android/README.md
+!plugin/iOS/README.md
